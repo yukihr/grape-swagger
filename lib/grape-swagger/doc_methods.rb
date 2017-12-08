@@ -74,6 +74,7 @@ module GrapeSwagger
         requires :name, type: String, desc: 'Resource name of mounted API'
         optional :locale, type: Symbol, desc: 'Locale of API documentation'
       end
+      instance_eval(guard) unless guard.nil?
       get "#{mount_path}/:name" do
         I18n.locale = params[:locale] || I18n.default_locale
 
